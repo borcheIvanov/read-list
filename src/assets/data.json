@@ -26,5 +26,17 @@
   {
     "title": "Github Actions lessons learned",
     "link": "https://www.infoq.com/articles/enterprise-github-actions/"
+  },
+  {
+    "title": "gRPC JSON Transcoding in .NET 7",
+    "link": "https://poornimanayar.co.uk/blog/grpc-json-transcoding-in-net-7/"
+  },
+  {
+    "title": "When Your DbContext Has The Wrong Scope",
+    "link": "https://haacked.com/archive/2023/01/09/scoping-db-context/"
+  },
+  {
+    "title": "Dotnet, C#, code format on JetBrain IDE Rider",
+    "link": "https://dev.to/tsotsi1/dotnet-c-code-format-on-jetbrain-ide-rider-504i"
   }
 ]
