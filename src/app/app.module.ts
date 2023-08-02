@@ -7,11 +7,11 @@ import { MatMenuModule } from "@angular/material/menu";
 import { CdkMenuTrigger } from "@angular/cdk/menu";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { DataService } from "./services/data.service";
-import {CommonModule} from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { ContentComponent } from './components/content/content.component';
-import {Route, RouterModule} from "@angular/router";
+import { Route, RouterModule } from "@angular/router";
 import { AddLinkComponent } from './components/add-link/add-link.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes = [
   {

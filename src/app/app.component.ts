@@ -1,7 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService, IList} from "./services/data.service";
-import {Observable} from "rxjs";
-import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

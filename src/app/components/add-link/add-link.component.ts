@@ -21,9 +21,9 @@ export class AddLinkComponent implements OnInit {
     const value = this.link.value;
 
     if (value) {
-      this.dataService.addLink(value).subscribe(result => {
+      this.dataService.addLink(value).subscribe(_ => {
         this.link.setValue('');
-      }, error => {
+      }, _ => {
         this.isSaveSuccessful = false;
       });
     }
