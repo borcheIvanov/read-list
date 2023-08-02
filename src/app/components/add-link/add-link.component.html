@@ -1,0 +1,10 @@
+<div style="padding: 5rem;">
+  <div>
+    <label for="link">Link: </label>
+    <input id="link" name="link" style="width: 60vw" [formControl]="link">
+    <button type="button" (click)="saveLink()">Add Link</button>
+  </div>
+  <div style="margin-top: 1rem;" *ngIf="!isSaveSuccessful">
+    <span style="color: red">Error occurred. Please try again</span>
+  </div>
+</div>
