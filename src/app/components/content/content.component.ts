@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {Observable} from "rxjs";
-import {DataService, IList} from "../../services/data.service";
-import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import { Observable } from "rxjs";
+import { DataService } from "../../services/data.service";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { ILink, IListItem } from 'src/app/models';
 
 @Component({
   selector: 'app-content',
@@ -10,19 +11,23 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 })
 export class ContentComponent {
   title = 'read-list';
-  $list!: Observable<IList[]>;
+  $list!: Observable<IListItem[]>;
   currentLink: SafeResourceUrl = '';
-  link: string = null!;
+  link: ILink | null = null;
   showMenu = true;
 
   constructor(private dataService: DataService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
+    this.fillList();
+  }
+
+  fillList(){
     this.$list = this.dataService.getReadingList();
   }
 
-  showContent(link:string) {
-    this.currentLink = this.sanitizer.bypassSecurityTrustResourceUrl(link);
+  showContent(link: ILink) {
+    this.currentLink = this.sanitizer.bypassSecurityTrustResourceUrl(link.address);
     this.link = link;
     this.toggleMenu();
   }
@@ -30,4 +35,37 @@ export class ContentComponent {
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
+
+  archive(): void {
+    this.dataService.archive(this.link!.id).subscribe({
+      next: (response) => {
+        if (response) {
+          this.clearState()
+        }
+      },
+      error: (error) => {
+        console.log(`a wild error appeared: ${error}`)
+      }
+    })
+  }
+
+  clearState() {
+    this.link = null;
+    this.currentLink = '';
+
+  }
+
+  delete(): void {
+    this.dataService.delete(this.link!.id).subscribe({
+      next: (response) => {
+        if (response) {
+          this.clearState()
+        }
+      },
+      error: (error) => {
+        console.log(`a wild error appeared: ${error}`)
+      }
+    })
+  }
+
 }

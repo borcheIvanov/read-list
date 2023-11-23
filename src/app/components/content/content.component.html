@@ -9,7 +9,7 @@
 
   <div class="menu" *ngIf="showMenu">
     <div *ngFor="let l of $list | async">
-      <button type="button" (click)="showContent(l.address)">{{l.title}}</button>
+      <button type="button" (click)="showContent(l)">{{l.title}}</button>
     </div>
   </div>
 
@@ -20,5 +20,11 @@
             height="auto"
             allowfullscreen></iframe>
   </div>
-  <div style="padding: 1rem;"><a [href]="currentLink" target="_blank">{{link}}</a></div>
+  <div style="padding: 1rem;">
+    <a [href]="currentLink" target="_blank">{{link?.address}}</a>
+    <div *ngIf="link" style="text-align: end;">
+      <button style="color: red" type="button" (click)="delete()">Delete</button>
+      <button style="color: orange" type="button" (click)="archive()">Archive</button>
+    </div>
+  </div>
 </div>
