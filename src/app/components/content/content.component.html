@@ -8,11 +8,15 @@
 <div style="margin-top: -8px;">
 
   <div class="menu" *ngIf="showMenu">
-    <div *ngFor="let l of $list | async">
-      <button type="button" (click)="showContent(l)">{{l.title}}</button>
-    </div>
+    <ng-container *ngIf="!list.length; else showResults">
+      <app-skeleton></app-skeleton>
+    </ng-container>
+    <ng-template #showResults>
+      <div *ngFor="let l of list">
+        <button type="button" (click)="showContent(l)">{{l.title}}</button>
+      </div>
+    </ng-template>
   </div>
-
   <div class="responsive-container">
     <iframe class="responsive-iframe"
             [src]="currentLink"

@@ -12,6 +12,7 @@ import { ContentComponent } from './components/content/content.component';
 import { Route, RouterModule } from "@angular/router";
 import { AddLinkComponent } from './components/add-link/add-link.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { SkeletonComponent } from './components/skeleton/skeleton.component';
 
 const routes = [
   {
@@ -28,7 +29,8 @@ const routes = [
   declarations: [
     AppComponent,
     ContentComponent,
-    AddLinkComponent
+    AddLinkComponent,
+    SkeletonComponent
   ],
   imports: [
     BrowserModule,

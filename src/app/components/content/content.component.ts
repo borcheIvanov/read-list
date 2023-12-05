@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from "rxjs";
 import { DataService } from "../../services/data.service";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { ILink, IListItem } from 'src/app/models';
@@ -11,7 +10,7 @@ import { ILink, IListItem } from 'src/app/models';
 })
 export class ContentComponent {
   title = 'read-list';
-  $list!: Observable<IListItem[]>;
+  list: IListItem[] = [];
   currentLink: SafeResourceUrl = '';
   link: ILink | null = null;
   showMenu = true;
@@ -23,7 +22,11 @@ export class ContentComponent {
   }
 
   fillList(){
-    this.$list = this.dataService.getReadingList();
+    this.list = [];
+    this.dataService.getReadingList().subscribe({
+      next: (result) => this.list = result,
+      error: (e) => console.error(`oh no.. error: ${e}`)
+    });
   }
 
   showContent(link: ILink) {
