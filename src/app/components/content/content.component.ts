@@ -55,7 +55,7 @@ export class ContentComponent {
   clearState() {
     this.link = null;
     this.currentLink = '';
-
+    this.fillList();
   }
 
   delete(): void {
