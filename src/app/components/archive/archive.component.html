@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Archived Links</h1>
+
+  @if (archivedLinks.length === 0) {
+    <p>No archived links yet!</p>
+  } @else {
+    <ul class="archive-list">
+      @for (link of archivedLinks; track link.id) {
+        <li class="archive-item">
+          <a href="{{ link.address }}" target="_blank">{{ link.title }}</a>
+        </li>
+      }
+    </ul>
+  }
+</div>

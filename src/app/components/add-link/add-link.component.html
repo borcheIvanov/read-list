@@ -1,10 +1,32 @@
-<div style="padding: 5rem;">
-  <div>
-    <label for="link">Link: </label>
-    <input id="link" name="link" style="width: 60vw" [formControl]="link">
-    <button type="button" (click)="saveLink()">Add Link</button>
-  </div>
-  <div style="margin-top: 1rem;" *ngIf="!isSaveSuccessful">
-    <span style="color: red">Error occurred. Please try again</span>
+<div class="container">
+  <h1>Add New Link</h1>
+  <form (ngSubmit)="saveLink()" class="add-form">
+    <div class="form-group">
+      <label for="url">URL:</label>
+      <input
+        type="url"
+        id="url"
+        [formControl]="link"
+        name="url"
+        required
+        placeholder="https://example.com"
+      >
+    </div>
+    <button type="submit">Add Link</button>
+  </form>
+
+  <div class="recent-links">
+    <h2>Recently Added Links</h2>
+    @if (recentLinks.length === 0) {
+      <p>No links added yet!</p>
+    } @else {
+      <ul class="links-list">
+        @for (link of recentLinks; track link) {
+          <li class="link-item">
+            <a href="{{ link }}" target="_blank">{{ link }}</a>
+          </li>
+        }
+      </ul>
+    }
   </div>
 </div>
