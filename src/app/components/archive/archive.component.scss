@@ -1,0 +1,19 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.archive-list {
+  list-style: none;
+  padding: 0;
+}
+.archive-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+.archive-date {
+  display: block;
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 5px;
+}

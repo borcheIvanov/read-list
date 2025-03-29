@@ -11,8 +11,9 @@ import { CommonModule } from "@angular/common";
 import { ContentComponent } from './components/content/content.component';
 import { Route, RouterModule } from "@angular/router";
 import { AddLinkComponent } from './components/add-link/add-link.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { ArchiveComponent } from "./components/archive/archive.component";
 
 const routes = [
   {
@@ -22,6 +23,10 @@ const routes = [
   {
     path: 'add-link',
     component: AddLinkComponent
+  },
+  {
+    path: 'archive',
+    component: ArchiveComponent
   }
 ] as Route[];
 
@@ -40,7 +45,8 @@ const routes = [
     MatMenuModule,
     CdkMenuTrigger,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [HttpClient, DataService],
   bootstrap: [AppComponent]

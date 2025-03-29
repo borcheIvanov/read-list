@@ -11,6 +11,8 @@ export class AddLinkComponent implements OnInit {
 
   link: FormControl = null!;
   isSaveSuccessful = true;
+  recentLinks: string[] = [];
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class AddLinkComponent implements OnInit {
 
     if (value) {
       this.dataService.addLink(value).subscribe(_ => {
+        this.recentLinks.push(value);
         this.link.setValue('');
       }, _ => {
         this.isSaveSuccessful = false;
